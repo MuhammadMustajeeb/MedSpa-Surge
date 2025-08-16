@@ -14,6 +14,7 @@ const eslintConfig = [
   {
     rules: {
       "react/no-unescaped-entities": "off", // disable globally
+      "@next/next/no-img-element": "off",
     },
   },
 ];
