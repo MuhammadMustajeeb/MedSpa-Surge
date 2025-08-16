@@ -1,102 +1,263 @@
-import Image from "next/image";
+'use client';
+import { NewHeroSection } from "../components/NewHeroSection";
+import { NewPainSection } from "../components/NewPainSection";
+import { NewProcessSection } from "../components/NewProcessSection";
+import { NewROIMathSection } from "../components/NewROIMathSection";
+import { NewAuthoritySection } from "../components/NewAuthoritySection";
+import { LiveDemoSection } from "../components/LiveDemoSection";
+import { FAQSection } from "../components/FAQSection";
+import { RiskReversalSection } from "../components/RiskReversalSection";
+import { FinalCTASection } from "../components/FinalCTASection";
 
-export default function Home() {
+/* 
+=== ETHICAL + PERSUASIVE LANDING PAGE ===
+Following $100M Offers, Lean Startup, and Influence principles
+
+STRUCTURE:
+1. Hero - Clear, urgent, ROI-driven offer ✓
+2. Pain - Show deep market understanding ✓  
+3. Process - Proof through system, not testimonials ✓
+4. ROI Math - Make ROI undeniable ✓
+5. Authority - Ethical proof through frameworks ✓
+6. Live Demo - Show instead of tell ✓
+7. FAQ - Overcome objections ✓
+8. Risk Reversal - Take the risk for them ✓
+9. Final CTA - Urgency + reciprocity ✓
+
+=== BUTTON FUNCTIONALITY GUIDE ===
+
+PRIMARY CTAs (All lead to lead capture):
+- "Claim My Free Audit Video" - Hero
+- "Stop The Bleeding - Get Free Audit" - Pain section
+- "Get My Free Audit" - Process section
+- "Calculate My ROI - Free Audit" - ROI section
+- "Get My Free Performance Audit" - Live demo section
+- "Get Free Audit Video" - Risk reversal
+- "Claim Your Free Audit Now" - Final CTA
+
+SECONDARY CTAs (Navigate/educate):
+- "See Live Demo" - Scrolls to live demo section
+- "Watch Sample Audit" - Opens modal/video
+- "Try Interactive Demo" - Opens demo site
+- Navigation links - Smooth scroll
+
+ALL primary CTAs should open the same lead capture form collecting:
+- Business name
+- Contact name
+- Email
+- Phone
+- Website URL
+- Best time to call
+- Current biggest website problem (optional)
+
+*/
+
+export default function App() {
+  // Main CTA handler - this is your primary conversion action
+  const handleMainCTA = () => {
+    // TODO: Implement lead capture form/modal
+    console.log("Main CTA clicked - should open lead capture form");
+    
+    // This should:
+    // 1. Open a modal with lead capture form
+    // 2. Collect all necessary lead information
+    // 3. Send to your CRM/email system
+    // 4. Show thank you message
+    // 5. Redirect to calendar booking or thank you page
+  };
+
+  const handleSecondaryCTA = (action: string) => {
+    console.log(`Secondary CTA clicked: ${action}`);
+    
+    switch(action) {
+      case 'demo':
+        document.getElementById('live-demo')?.scrollIntoView({ behavior: 'smooth' });
+        break;
+      case 'process':
+        document.getElementById('process')?.scrollIntoView({ behavior: 'smooth' });
+        break;
+      case 'faq':
+        document.getElementById('faq')?.scrollIntoView({ behavior: 'smooth' });
+        break;
+      default:
+        break;
+    }
+  };
+
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    <div className="min-h-screen bg-white">
+      {/* Mobile Sticky CTA - Critical for mobile conversions */}
+      <div className="fixed bottom-4 left-4 right-4 z-50 md:hidden">
+        <button 
+          onClick={handleMainCTA}
+          className="w-full bg-[#6B4EFF] hover:bg-[#5a3eef] text-white py-4 px-6 rounded-xl font-bold text-lg shadow-2xl transition-all duration-300 animate-pulse"
+        >
+          👉 Get Free Audit (Limited Spots)
+        </button>
+      </div>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+      {/* Header - Always visible */}
+      <header className="bg-white/95 backdrop-blur-sm shadow-sm border-b sticky top-0 z-40">
+        <div className="container mx-auto px-4 py-4">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 bg-[#6B4EFF] rounded-lg flex items-center justify-center shadow-lg">
+                <span className="text-white font-bold text-lg">MS</span>
+              </div>
+              <div>
+                <span className="text-2xl font-bold text-gray-900">MedSpa Surge</span>
+                <div className="text-xs text-gray-600 hidden sm:block">14-Day Website Fix</div>
+              </div>
+            </div>
+            
+            <nav className="hidden md:flex items-center gap-8">
+              <button 
+                onClick={() => handleSecondaryCTA('process')}
+                className="text-gray-600 hover:text-[#6B4EFF] font-medium transition-colors"
+              >
+                How It Works
+              </button>
+              <button 
+                onClick={() => handleSecondaryCTA('demo')}
+                className="text-gray-600 hover:text-[#6B4EFF] font-medium transition-colors"
+              >
+                Live Demo
+              </button>
+              <button 
+                onClick={() => handleSecondaryCTA('faq')}
+                className="text-gray-600 hover:text-[#6B4EFF] font-medium transition-colors"
+              >
+                FAQ
+              </button>
+              <button 
+                onClick={handleMainCTA}
+                className="bg-[#6B4EFF] hover:bg-[#5a3eef] text-white px-6 py-2 rounded-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-xl"
+              >
+                Free Audit
+              </button>
+            </nav>
+            
+            <button 
+              onClick={handleMainCTA}
+              className="md:hidden bg-[#6B4EFF] text-white px-4 py-2 rounded-lg font-semibold shadow-lg"
+            >
+              Audit
+            </button>
+          </div>
         </div>
+      </header>
+
+      {/* Main Content - Following the 9-section structure */}
+      <main>
+        {/* 1. Hero - Clarity + Urgency */}
+        <NewHeroSection />
+        
+        {/* 2. Pain - Starving Crowd */}
+        <NewPainSection />
+        
+        {/* 3. Process - Proof through System */}
+        <NewProcessSection />
+        
+        {/* 4. ROI Math - Logical Persuasion */}
+        <NewROIMathSection />
+        
+        {/* 5. Authority - Ethical Proof */}
+        <NewAuthoritySection />
+        
+        {/* 6. Live Demo - Show Instead of Tell */}
+        <LiveDemoSection />
+        
+        {/* 7. FAQ - Overcome Objections */}
+        <div id="faq">
+          <FAQSection />
+        </div>
+        
+        {/* 8. Risk Reversal - Take the Risk */}
+        <RiskReversalSection />
+        
+        {/* 9. Final CTA - Urgency + Reciprocity */}
+        <FinalCTASection />
       </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
+
+      {/* Footer */}
+      <footer className="bg-gray-900 text-white py-16">
+        <div className="container mx-auto px-4">
+          <div className="grid gap-8 md:grid-cols-4">
+            <div className="space-y-4">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 bg-[#6B4EFF] rounded-lg flex items-center justify-center">
+                  <span className="text-white font-bold text-lg">MS</span>
+                </div>
+                <span className="text-xl font-bold">MedSpa Surge</span>
+              </div>
+              <p className="text-gray-400 leading-relaxed">
+                We fix broken Med Spa websites in 14 days - or you don't pay. 
+                Guaranteed results, guaranteed timeline.
+              </p>
+              <div className="flex items-center gap-2 text-sm text-[#EFCB68]">
+                <span className="w-2 h-2 bg-[#EFCB68] rounded-full animate-pulse"></span>
+                <span>Limited spots available this month</span>
+              </div>
+            </div>
+            
+            <div>
+              <h4 className="font-semibold mb-4">Our Process</h4>
+              <ul className="space-y-2 text-gray-400">
+                <li><button onClick={() => handleSecondaryCTA('process')} className="hover:text-white transition-colors text-left">14-Day Fix Process</button></li>
+                <li><button onClick={() => handleSecondaryCTA('demo')} className="hover:text-white transition-colors text-left">Live Demo</button></li>
+                <li><a href="#" className="hover:text-white transition-colors">Booking Systems</a></li>
+                <li><a href="#" className="hover:text-white transition-colors">Speed Optimization</a></li>
+              </ul>
+            </div>
+            
+            <div>
+              <h4 className="font-semibold mb-4">Guarantee</h4>
+              <ul className="space-y-2 text-gray-400">
+                <li><a href="#" className="hover:text-white transition-colors">100% Satisfaction</a></li>
+                <li><a href="#" className="hover:text-white transition-colors">14-Day Delivery</a></li>
+                <li><a href="#" className="hover:text-white transition-colors">Results or Refund</a></li>
+                <li><button onClick={handleMainCTA} className="hover:text-white transition-colors text-left">Get Free Audit</button></li>
+              </ul>
+            </div>
+            
+            <div>
+              <h4 className="font-semibold mb-4">Contact</h4>
+              <ul className="space-y-2 text-gray-400">
+                <li className="flex items-center gap-2">
+                  <span>📧</span> hello@medspasurge.com
+                </li>
+                <li className="flex items-center gap-2">
+                  <span>📞</span> (555) 123-4567
+                </li>
+                <li className="flex items-center gap-2">
+                  <span>🕒</span> Mon-Fri 9AM-6PM EST
+                </li>
+                <li className="flex items-center gap-2">
+                  <span>⚡</span> 24hr response guarantee
+                </li>
+              </ul>
+            </div>
+          </div>
+          
+          <div className="border-t border-gray-800 mt-12 pt-8">
+            <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+              <div className="text-gray-400 text-sm">
+                &copy; 2024 MedSpa Surge. All rights reserved. Built with conversion psychology.
+              </div>
+              
+              <div className="flex items-center gap-6 text-sm">
+                <a href="#" className="text-gray-400 hover:text-white transition-colors">Privacy Policy</a>
+                <a href="#" className="text-gray-400 hover:text-white transition-colors">Terms of Service</a>
+                <button 
+                  onClick={handleMainCTA}
+                  className="bg-[#6B4EFF] hover:bg-[#5a3eef] text-white px-4 py-2 rounded-lg font-semibold transition-all duration-300"
+                >
+                  Start Here
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
       </footer>
     </div>
   );
