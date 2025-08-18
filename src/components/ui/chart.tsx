@@ -2,7 +2,17 @@
 
 import * as React from "react";
 import * as RechartsPrimitive from "recharts";
-import type { TooltipProps, LegendProps, Payload } from "recharts";
+import type { TooltipProps, LegendProps } from "recharts";
+
+// Define Payload type locally since it's not exported by recharts
+type Payload<Value = number, Name = string> = {
+  color?: string;
+  dataKey?: string;
+  name?: Name;
+  value?: Value;
+  payload?: any;
+  [key: string]: any;
+};
 
 import { cn } from "./utils";
 
@@ -116,16 +126,17 @@ function ChartTooltipContent({
   labelFormatter,
   labelClassName,
   formatter,
-  color,
   nameKey,
   labelKey,
-}: TooltipProps<number, string> & {
+}: Omit<TooltipProps<number, string>, "payload"> & {
+  payload?: Payload<number, string>[];
   className?: string;
   hideLabel?: boolean;
   hideIndicator?: boolean;
   indicator?: "line" | "dot" | "dashed";
   nameKey?: string;
   labelKey?: string;
+  label?: string | number | React.ReactNode;
 }) {
   const { config } = useChart();
 
@@ -180,11 +191,10 @@ function ChartTooltipContent({
     >
       {!nestLabel ? tooltipLabel : null}
       <div className="grid gap-1.5">
-        {payload.map((item, index) => {
+        {payload.map((item: Payload<number, string>, index: number) => {
           const key = `${nameKey || item.name || item.dataKey || "value"}`;
           const itemConfig = getPayloadConfigFromPayload(config, item, key);
-          const indicatorColor = color || item.payload.fill || item.color;
-
+          const indicatorColor = item.payload?.fill || item.color;
           return (
             <div
               key={item.dataKey || index}
@@ -261,7 +271,9 @@ function ChartLegendContent({
   className?: string;
   hideIcon?: boolean;
   nameKey?: string;
-} & Pick<LegendProps, "payload" | "verticalAlign">) {
+  payload?: Array<any>;
+  verticalAlign?: "top" | "bottom" | "middle";
+}) {
   const { config } = useChart();
 
   if (!payload?.length) {
