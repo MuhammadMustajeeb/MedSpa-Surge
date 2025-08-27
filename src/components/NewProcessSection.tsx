@@ -1,7 +1,7 @@
 import { Button } from "./ui/button";
 import { Search, Wrench, TrendingUp, CheckCircle, ArrowRight } from "lucide-react";
 
-export function NewProcessSection() {
+export function NewProcessSection({ onPrimaryCTA }: { onPrimaryCTA: () => void }) {
   const steps = [
     {
       step: "01",
@@ -108,12 +108,11 @@ export function NewProcessSection() {
                     <span className="font-semibold">{step.timeline}</span>
                   </div>
 
+                  {/* CTA only on first step */}
                   {index === 0 && (
                     <Button 
                       size="lg" 
-                      onClick={() => {
-                        console.log("Book audit CTA clicked - open booking system");
-                      }}
+                      onClick={onPrimaryCTA}
                       className="bg-[#6B4EFF] hover:bg-[#5a3eef] text-white px-8 py-4 text-lg font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 group"
                     >
                       👉 Get My Free Audit

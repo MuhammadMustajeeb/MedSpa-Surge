@@ -1,10 +1,16 @@
+"use client";
+
 import { Button } from "./ui/button";
 import { ArrowRight, Play } from "lucide-react";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 
-export function NewHeroSection() {
+type NewHeroSectionProps = {
+  onPrimaryCTA: () => void; // 🔑 accept handler from parent
+};
+
+export function NewHeroSection({ onPrimaryCTA }: NewHeroSectionProps) {
   return (
-    <section className="bg-gradient-to-br from-white via-purple-50/30 to-blue-50/30 py-20 lg:py-32 relative overflow-hidden">
+    <section className="bg-gradient-to-br from-white via-purple-50/30 to-blue-50/30 py-20 lg:py-20 relative overflow-hidden">
       <div className="container mx-auto px-4">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <div className="space-y-8">
@@ -43,9 +49,7 @@ export function NewHeroSection() {
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
               <Button 
                 size="lg" 
-                onClick={() => {
-                  console.log("Primary CTA clicked - open lead capture");
-                }}
+                onClick={onPrimaryCTA} // 🔑 use handler passed from parent
                 className="bg-[#6B4EFF] hover:bg-[#5a3eef] text-white px-8 py-6 text-xl font-bold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 group"
               >
                 👉 Claim My Free Audit Video

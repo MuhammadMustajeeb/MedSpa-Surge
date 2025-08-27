@@ -1,7 +1,11 @@
 import { Button } from "./ui/button";
 import { Shield, CheckCircle, Clock, DollarSign } from "lucide-react";
 
-export function RiskReversalSection() {
+type RiskReversalSectionProps = {
+  onPrimaryCTA: () => void;
+};
+
+export function RiskReversalSection({ onPrimaryCTA }: RiskReversalSectionProps) {
   return (
     <section className="py-20 bg-gradient-to-br from-[#6B4EFF] to-[#8B5CF6] text-white">
       <div className="container mx-auto px-4">
@@ -96,12 +100,10 @@ export function RiskReversalSection() {
             </div>
           </div>
 
+          {/* ✅ Main CTA uses prop */}
           <Button 
             size="lg" 
-            onClick={() => {
-              // Main CTA - should open lead capture form/modal
-              console.log("Risk reversal CTA clicked - open lead capture form");
-            }}
+            onClick={onPrimaryCTA}
             className="bg-[#EFCB68] hover:bg-[#e6b84f] text-gray-900 px-12 py-6 text-xl font-bold rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300"
           >
             👉 Get Free Audit Video

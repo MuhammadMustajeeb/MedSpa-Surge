@@ -1,7 +1,11 @@
 import { Button } from "./ui/button";
 import { ArrowRight, Clock, Users, TrendingUp } from "lucide-react";
 
-export function FinalCTASection() {
+type FinalCTASectionProps = {
+  onPrimaryCTA: () => void;
+};
+
+export function FinalCTASection({ onPrimaryCTA }: FinalCTASectionProps) {
   return (
     <section className="py-20 bg-gradient-to-r from-gray-900 via-[#1a1a2e] to-gray-900 text-white relative overflow-hidden">
       <div className="container mx-auto px-4 relative z-10">
@@ -9,9 +13,11 @@ export function FinalCTASection() {
           <div className="mb-12">
             <div className="inline-flex items-center bg-red-100 text-red-800 px-6 py-3 rounded-full border border-red-200 mb-8">
               <span className="w-3 h-3 bg-red-500 rounded-full mr-3 animate-pulse"></span>
-              <span className="font-semibold">🚨 Limited Time: Only 5 Free Audits Left This Month</span>
+              <span className="font-semibold">
+                🚨 Limited Time: Only 5 Free Audits Left This Month
+              </span>
             </div>
-            
+
             <h2 className="text-4xl lg:text-6xl font-bold mb-6 leading-tight">
               We Can Only Take <span className="text-[#EFCB68]">5 Free Audits</span> This Month —<br />
               Claim Yours Today.
@@ -79,10 +85,7 @@ export function FinalCTASection() {
           <div className="space-y-6">
             <Button 
               size="lg" 
-              onClick={() => {
-                // Main CTA - should open lead capture form/modal
-                console.log("Final CTA clicked - open lead capture form");
-              }}
+              onClick={onPrimaryCTA}
               className="bg-[#EFCB68] hover:bg-[#e6b84f] text-gray-900 px-16 py-8 text-2xl font-bold rounded-2xl shadow-2xl hover:shadow-3xl transition-all duration-300 group"
             >
               👉 Claim Your Free Audit Now

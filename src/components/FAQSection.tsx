@@ -65,13 +65,13 @@ export function FAQSection() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a 
-              href="mailto:hello@medspasurge.com" 
+              href="mustajeeb7@gmail.com" 
               className="inline-flex items-center justify-center px-6 py-3 bg-gray-100 hover:bg-gray-200 text-gray-900 font-medium rounded-xl transition-colors duration-200"
             >
               📧 Email Us
             </a>
             <a 
-              href="tel:+1234567890" 
+              href="+923710102330" 
               className="inline-flex items-center justify-center px-6 py-3 bg-gray-100 hover:bg-gray-200 text-gray-900 font-medium rounded-xl transition-colors duration-200"
             >
               📞 Call Us
