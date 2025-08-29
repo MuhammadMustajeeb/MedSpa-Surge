@@ -5,7 +5,7 @@ import { Calculator, TrendingUp, DollarSign, ArrowUp } from "lucide-react";
 
 export function NewROIMathSection({ onPrimaryCTA }: { onPrimaryCTA: () => void }) {
   return (
-    <section className="py-20 bg-gradient-to-br from-green-50 to-emerald-50">
+    <section id="roi" className="py-20 bg-gradient-to-br from-green-50 to-emerald-50">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">

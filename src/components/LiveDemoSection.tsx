@@ -83,12 +83,15 @@ export function LiveDemoSection({ onPrimaryCTA }: LiveDemoSectionProps) {
               </div>
             </div>
             <Button 
-              className="w-full bg-[#6B4EFF] hover:bg-[#5a3eef] text-white"
-              onClick={onPrimaryCTA}
-            >
-              <ExternalLink className="w-4 h-4 mr-2" />
-              Try Interactive Demo
-            </Button>
+  asChild
+  className="w-full bg-[#6B4EFF] hover:bg-[#5a3eef] text-white"
+>
+  <a href="https://med-spa-surge.vercel.app/" target="_blank" rel="noopener noreferrer">
+    <ExternalLink className="w-4 h-4 mr-2" />
+    Try Interactive Demo
+  </a>
+</Button>
+
           </div>
 
           {/* Personal Audit Offer */}
@@ -213,3 +216,8 @@ export function LiveDemoSection({ onPrimaryCTA }: LiveDemoSectionProps) {
     </section>
   );
 }
+// SECONDARY CTAs (Navigate/educate):
+// - "See Live Demo" - Scrolls to live demo section
+// - "Watch Sample Audit" - Opens modal/video
+// - "Try Interactive Demo" - Opens demo site
+// - Navigation links - Smooth scroll

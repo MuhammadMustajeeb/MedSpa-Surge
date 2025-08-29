@@ -7,7 +7,7 @@ type RiskReversalSectionProps = {
 
 export function RiskReversalSection({ onPrimaryCTA }: RiskReversalSectionProps) {
   return (
-    <section className="py-20 bg-gradient-to-br from-[#6B4EFF] to-[#8B5CF6] text-white">
+    <section id="risk-reversal" className="py-20 bg-gradient-to-br from-[#6B4EFF] to-[#8B5CF6] text-white">
       <div className="container mx-auto px-4">
         <div className="max-w-5xl mx-auto text-center">
           <div className="mb-12">

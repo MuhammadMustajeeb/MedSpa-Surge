@@ -10,9 +10,13 @@ import { LiveDemoSection } from "../components/LiveDemoSection";
 import { FAQSection } from "../components/FAQSection";
 import { RiskReversalSection } from "../components/RiskReversalSection";
 import { FinalCTASection } from "../components/FinalCTASection";
+import { PrivacyPolicyModal } from "../components/PrivacyPolicyModal";
+import { TermsOfServiceModal } from "../components/TermsofServiceModal";
 
 export default function App() {
   const [showForm, setShowForm] = useState(false);
+  const [showPrivacyPolicy, setShowPrivacyPolicy] = useState(false);
+  const [showTermsOfService, setShowTermsOfService] = useState(false);
 
   // Main CTA handler - all primary CTAs trigger this
   const handleMainCTA = () => {
@@ -27,6 +31,12 @@ export default function App() {
         break;
       case 'process':
         document.getElementById('process')?.scrollIntoView({ behavior: 'smooth' });
+        break;
+      case 'roi':
+        document.getElementById('roi')?.scrollIntoView({ behavior: 'smooth' });
+        break;
+      case 'risk-reversal':
+        document.getElementById('risk-reversal')?.scrollIntoView({ behavior: 'smooth' });
         break;
       case 'faq':
         document.getElementById('faq')?.scrollIntoView({ behavior: 'smooth' });
@@ -137,25 +147,25 @@ export default function App() {
               <ul className="space-y-2 text-gray-400">
                 <li><button onClick={() => handleSecondaryCTA('process')} className="hover:text-white transition-colors text-left">14-Day Fix Process</button></li>
                 <li><button onClick={() => handleSecondaryCTA('demo')} className="hover:text-white transition-colors text-left">Live Demo</button></li>
-                <li><a href="#" className="hover:text-white transition-colors">Booking Systems</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Speed Optimization</a></li>
+                <li><button onClick={() => handleSecondaryCTA('demo')} className="hover:text-white transition-colors">Booking Systems</button></li>
+                <li><button onClick={() => handleSecondaryCTA('roi')} className="hover:text-white transition-colors">Speed Optimization</button></li>
               </ul>
             </div>
             <div>
               <h4 className="font-semibold mb-4">Guarantee</h4>
               <ul className="space-y-2 text-gray-400">
-                <li><a href="#" className="hover:text-white transition-colors">100% Satisfaction</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">14-Day Delivery</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Results or Refund</a></li>
+                <li><button onClick={() => handleSecondaryCTA('risk-reversal')} className="hover:text-white transition-colors">100% Satisfaction</button></li>
+                <li><button onClick={() => handleSecondaryCTA('process')} className="hover:text-white transition-colors">14-Day Delivery</button></li>
+                <li><button onClick={() => handleSecondaryCTA('risk-reversal')} className="hover:text-white transition-colors">Results or Refund</button></li>
                 <li><button onClick={handleMainCTA} className="hover:text-white transition-colors text-left">Get Free Audit</button></li>
               </ul>
             </div>
             <div>
               <h4 className="font-semibold mb-4">Contact</h4>
               <ul className="space-y-2 text-gray-400">
-                <li className="flex items-center gap-2">📧 hello@medspasurge.com</li>
-                <li className="flex items-center gap-2">📞 (555) 123-4567</li>
-                <li className="flex items-center gap-2">🕒 Mon-Fri 9AM-6PM EST</li>
+                <li className="flex items-center gap-2">📧 medspasruge.com</li>
+                <li className="flex items-center gap-2">📞 +92 371 0102330</li>
+                <li className="flex items-center gap-2">🕒 Mon-Fri 5PM-10PM EST</li>
                 <li className="flex items-center gap-2">⚡ 24hr response guarantee</li>
               </ul>
             </div>
@@ -166,8 +176,18 @@ export default function App() {
                 &copy; 2024 MedSpa Surge. All rights reserved. Built with conversion psychology.
               </div>
               <div className="flex items-center gap-6 text-sm">
-                <a href="#" className="text-gray-400 hover:text-white transition-colors">Privacy Policy</a>
-                <a href="#" className="text-gray-400 hover:text-white transition-colors">Terms of Service</a>
+                <button 
+                  onClick={() => setShowPrivacyPolicy(true)}
+                  className="text-gray-400 hover:text-white transition-colors"
+                >
+                  Privacy Policy
+                </button>
+                <button 
+                  onClick={() => setShowTermsOfService(true)}
+                  className="text-gray-400 hover:text-white transition-colors"
+                >
+                  Terms of Service
+                </button>
                 <button 
                   onClick={handleMainCTA}
                   className="bg-[#6B4EFF] hover:bg-[#5a3eef] text-white px-4 py-2 rounded-lg font-semibold transition-all duration-300"
@@ -209,6 +229,16 @@ export default function App() {
           </div>
         </div>
       )}
+
+      {/* Legal Modals */}
+      <PrivacyPolicyModal 
+        isOpen={showPrivacyPolicy} 
+        onClose={() => setShowPrivacyPolicy(false)} 
+      />
+      <TermsOfServiceModal 
+        isOpen={showTermsOfService} 
+        onClose={() => setShowTermsOfService(false)} 
+      />
     </div>
   );
 }
